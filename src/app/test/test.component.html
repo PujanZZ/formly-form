@@ -1,0 +1,54 @@
+<!-- <div class="test1">
+  <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+    <p>Name</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput />
+    </mat-form-field>
+    <div>
+      <span *ngIf="carForm.get('name').errors.required"> test </span>
+    </div>
+    <p>Email</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput required />
+      <mat-error *ngIf="carForm.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+    <p>Skill</p>
+    <div formGroupName="skills">
+      <div class="test3">
+        <mat-form-field appearance="fill">
+          <mat-label>Skill</mat-label>
+          <input formControlName="skillName" matInput />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Experience in years</mat-label>
+          <input formControlName="experienceInYears" matInput />
+        </mat-form-field>
+      </div>
+      <div>
+        <p>Skill Level</p>
+        <mat-radio-group formControlName="level" aria-label="Select an option">
+          <mat-radio-button value="Easy">Easy</mat-radio-button>
+          <mat-radio-button value="Medium">Medium</mat-radio-button>
+          <mat-radio-button value="Hard">Hard</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <br />
+    </div>
+    <div class="sbtn">
+      <button mat-raised-button color="primary" style="margin-right: 16px">
+        Submit
+      </button>
+      <button mat-raised-button color="primary" (click)="onLoad()">Load</button>
+    </div>
+  </form>
+</div>
+
+<div class="test2">
+  <p><b>Name:</b> {{ carForm.get('name').value }}</p>
+  <p><b>Email</b>: {{ carForm.get('email').value }}</p>
+  <p>{{ carForm.value | json }}</p>
+  <p>Skill: {{ this.carForm.get('skills').value.level }}</p>
+</div> -->

@@ -1,0 +1,33 @@
+<!-- <div>
+  <mat-form-field appearance="fill">
+    <mat-label>Select Some Input</mat-label>
+    <mat-select
+      (selectionChange)="option === 'Option 1' ? inputForm() : null"
+      (selectionChange)="option === 'Option 2' ? textForm() : null"
+      (selectionChange)="option === 'Option 3' ? multiSelect() : null"
+      (selectionChange)="option === 'Option 4' ? radioButton() : null"
+      [(value)]="option"
+    >
+      <mat-option *ngFor="let l of list" [value]="l">{{ l }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<button mat-flat-button color="warn" (click)="submit()">Click</button>
+
+<button style="margin: 10px" mat-flat-button color="warn" (click)="reset()">
+  Reset
+</button>
+
+<button mat-flat-button color="primary" (click)="options.resetModel()">
+  Clear Form
+</button>
+
+<form [formGroup]="form">
+  <formly-form
+    [model]="model"
+    [fields]="fields"
+    [options]="options"
+    [form]="form"
+  ></formly-form>
+</form> -->

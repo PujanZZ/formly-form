@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.left {
+  margin-right: 20px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.right {
+  width: 50%;
+}
+
+.seldiv {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}

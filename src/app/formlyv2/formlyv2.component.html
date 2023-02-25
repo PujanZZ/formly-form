@@ -1,0 +1,102 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form">
+      <div class="container">
+        <div class="left">
+          <ng-container *ngIf="form.controls['radio_button'].value === '1'">
+            <mat-form-field appearance="fill">
+              <mat-label>Input</mat-label>
+              <input formControlName="field_type" matInput />
+            </mat-form-field>
+          </ng-container>
+
+          <ng-container *ngIf="form.controls['radio_button'].value === '2'">
+            <mat-form-field appearance="fill">
+              <mat-label>Text Area</mat-label>
+              <textarea matInput formControlName="textareaField"></textarea>
+            </mat-form-field>
+          </ng-container>
+
+          <mat-radio-group
+            aria-label="Select an option"
+            formControlName="radio_button"
+          >
+            <mat-radio-button value="1">Input</mat-radio-button>
+            <mat-radio-button value="2">Text Area</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <div class="right">
+          <div formArrayName="option">
+            <div *ngFor="let opt of option.controls; let i = index">
+              <mat-form-field appearance="fill">
+                <mat-label>Option {{ i + 1 }}:</mat-label>
+                <input [formControlName]="i" type="text" matInput />
+              </mat-form-field>
+              <button
+                style="margin: 5px"
+                mat-raised-button
+                (click)="removeOptions(i)"
+              >
+                Remove Option
+              </button>
+            </div>
+            <button mat-raised-button (click)="addOptions()">
+              Add New Field
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<mat-card style="margin-top: 100px">
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-form-field appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select formControlName="multi_select" multiple>
+          <!-- <mat-option value="input">Input</mat-option>
+          <mat-option value="textarea">TextArea</mat-option> -->
+          <mat-option *ngFor="let l of listInput" [value]="l">{{
+            l
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-radio-group
+        aria-label="Select an option"
+        formControlName="radio_button"
+      >
+        <mat-radio-button value="hide">Required</mat-radio-button>
+        <mat-radio-button value="show">Not Required</mat-radio-button>
+      </mat-radio-group>
+
+      <div class="seldiv">
+        <ng-container
+          *ngIf="form.controls['multi_select'].value.includes('input')"
+        >
+          <mat-form-field appearance="fill">
+            <mat-label>Input Field</mat-label>
+            <input matInput formControlName="field_type" />
+          </mat-form-field>
+        </ng-container>
+
+        <ng-container
+          *ngIf="form.controls['multi_select'].value.includes('textarea')"
+        >
+          <mat-form-field appearance="fill">
+            <mat-label>Textarea Field</mat-label>
+            <textarea matInput formControlName="textareaField"></textarea>
+          </mat-form-field>
+        </ng-container>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<hr />
+<mat-card style="margin-top:150px">
+  <mat-card-content>Preview card</mat-card-content>
+</mat-card>
