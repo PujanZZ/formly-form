@@ -20,6 +20,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { MatSelectModule } from '@angular/material/select';
 import { Formlyv2Component } from './formlyv2/formlyv2.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { Formlyv2Component } from './formlyv2/formlyv2.component';
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule,
+    MatCheckboxModule,
     FormlyModule,
     FormlyMaterialModule,
     FormlyModule.forRoot({
