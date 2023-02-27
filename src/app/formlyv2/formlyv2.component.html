@@ -20,6 +20,8 @@
                 <mat-option value="textarea">Text Area</mat-option>
                 <mat-option value="checkbox">Check Box</mat-option>
                 <mat-option value="radio">Radio Button</mat-option>
+                <mat-option value="toggle">Toggle Button</mat-option>
+                <mat-option value="datepicker">Date Picker</mat-option>
               </mat-select>
             </mat-form-field>
           </ng-container>
@@ -60,37 +62,51 @@
         <div class="right">
           <!-- right -->
           <ng-container>
-            <mat-form-field appearance="fill" class="right1">
+            <!-- <mat-form-field appearance="fill" class="right1">
               <mat-label>Type of Field Required</mat-label>
               <mat-select
                 matNativeControl
                 formArrayName="option_extra"
                 multiple
               >
-                <div
-                  class="selectOption"
-                  *ngFor="let o of optionArr.controls; let i = index"
-                >
-                  <mat-option [formControlName]="i">
-                    Option {{ i }}
-                    <button
-                      mat-button
-                      style="height:50px; margin-top:10px"
-                      (click)="removeOptions(i)"
-                    >
-                      <mat-icon fontIcon="remove"></mat-icon>
-                    </button>
-                    <button
-                      mat-button
-                      style="height:50px; margin-top:10px"
-                      (click)="addOptions()"
-                    >
-                      <mat-icon fontIcon="add"></mat-icon>
-                    </button>
-                  </mat-option>
-                </div>
               </mat-select>
-            </mat-form-field>
+            </mat-form-field> -->
+
+            <div
+              class="selectOption"
+              *ngFor="let o of optionArr; let i = index"
+              [formGroup]="o"
+            >
+              <div class="LabelDesOption">
+                <mat-form-field appearance="fill">
+                  <mat-label>Value</mat-label>
+                  <input formControlName="value" matInput />
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="fill">
+                  <mat-label>Label</mat-label>
+                  <input formControlName="label" matInput />
+                </mat-form-field>
+              </div>
+
+              <button
+                mat-raised-button
+                color="warn"
+                style="margin-top:10px;margin-left:10px"
+                (click)="removeOptions(i)"
+              >
+                <mat-icon fontIcon="remove"></mat-icon>
+              </button>
+            </div>
+            <button
+              style="margin-left:15px"
+              mat-raised-button
+              color="primary"
+              (click)="addOptions()"
+            >
+              Add
+            </button>
           </ng-container>
         </div>
       </div>

@@ -21,6 +21,8 @@ import { FormlyMaterialModule } from '@ngx-formly/material';
 import { MatSelectModule } from '@angular/material/select';
 import { Formlyv2Component } from './formlyv2/formlyv2.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormlyMatDatepickerModule } from '@ngx-formly/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   imports: [
@@ -38,6 +40,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatCheckboxModule,
     FormlyModule,
     FormlyMaterialModule,
+    MatNativeDateModule,
+    FormlyMatDatepickerModule,
     FormlyModule.forRoot({
       validationMessages: [
         {
