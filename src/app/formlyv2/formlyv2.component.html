@@ -56,7 +56,12 @@
             </ng-container>
           </ng-container>
 
-          <ng-container>
+          <ng-container
+            *ngIf="
+              form.get('typeOfField').value === 'radio' ||
+              form.get('typeOfField').value === 'select'
+            "
+          >
             <div
               class="selectOption"
               *ngFor="let o of optionArr; let i = index"
@@ -102,18 +107,18 @@
                   Add Options?
                 </button>
               </ng-container>
-              <div style="display: flex; justify-content: flex-end;">
-                <button
-                  type="submit"
-                  mat-raised-button
-                  color="primary"
-                  (click)="onAccept()"
-                >
-                  Accept
-                </button>
-              </div>
             </div>
           </ng-container>
+          <div style="display: flex; justify-content: flex-end;">
+            <button
+              type="submit"
+              mat-raised-button
+              color="primary"
+              (click)="onAccept()"
+            >
+              Accept
+            </button>
+          </div>
 
           <br />
         </div>
