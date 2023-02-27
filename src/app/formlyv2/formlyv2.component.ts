@@ -17,7 +17,7 @@ export class Formlyv2Component implements OnInit {
       description: new FormControl(''),
       is_required: new FormControl(false),
     }),
-    options: new FormArray([]),
+    option_extra: new FormArray([]),
   });
 
   form2 = new FormGroup({});
@@ -57,18 +57,22 @@ export class Formlyv2Component implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(
+      (this.form.get('option_extra') as FormArray).controls as FormGroup[]
+    );
+  }
 
   onSubmit() {
     console.log(this.form);
   }
 
   onAccept() {
-    console.log(this.model);
+    console.log(this.fields);
   }
 
-  get option() {
-    return this.form.controls['option'] as FormArray;
+  get optionArr() {
+    return this.form.controls['option_extra'] as FormArray;
   }
 
   get input() {
@@ -76,10 +80,16 @@ export class Formlyv2Component implements OnInit {
   }
 
   addOptions() {
-    this.option.push(new FormControl());
+    const index = new FormGroup({
+      value: new FormControl(),
+      label: new FormControl(),
+    });
+    this.optionArr.push(new FormControl(''));
   }
 
   removeOptions(index: number) {
-    this.option.removeAt(index);
+    if (this.optionArr.length > 1) {
+      this.optionArr.removeAt(index);
+    }
   }
 }

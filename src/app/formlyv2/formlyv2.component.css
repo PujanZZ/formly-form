@@ -14,10 +14,15 @@
   width: 50%;
 }
 
-.seldiv {
+.right1 {
+  width: 100%;
+}
+
+.selectOption {
+  margin-left: 15px;
   display: flex;
-  flex-direction: column;
-  width: 50%;
+  flex-direction: row;
+  text-align: center;
 }
 
 .labelplace {
