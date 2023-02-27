@@ -20,7 +20,7 @@
                 <mat-option value="textarea">Text Area</mat-option>
                 <mat-option value="checkbox">Check Box</mat-option>
                 <mat-option value="radio">Radio Button</mat-option>
-                <mat-option value="toggle">Toggle Button</mat-option>
+                <mat-option value="select">Select Option</mat-option>
                 <mat-option value="datepicker">Date Picker</mat-option>
               </mat-select>
             </mat-form-field>
@@ -51,32 +51,30 @@
             >
           </ng-container>
 
-          <ng-container> </ng-container>
-
-          <br />
-        </div>
-        <div class="right">
-          <!-- right -->
           <ng-container>
             <div
               class="selectOption"
               *ngFor="let o of optionArr; let i = index"
               [formGroup]="o"
             >
-              <div class="LabelDesOption">
-                <mat-form-field appearance="fill">
-                  <mat-label>Value</mat-label>
-                  <input formControlName="value" matInput />
-                </mat-form-field>
+              <div style="display: flex; flex-direction: row;">
+                <div style="display: flex; flex-direction: column; flex: 1;">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Value</mat-label>
+                    <input formControlName="value" matInput />
+                  </mat-form-field>
+                </div>
+                <div style="display: flex; flex-direction: column; flex: 1;">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Label</mat-label>
+                    <input formControlName="label" matInput />
+                  </mat-form-field>
+                </div>
               </div>
-              <div>
-                <mat-form-field appearance="fill">
-                  <mat-label>Label</mat-label>
-                  <input formControlName="label" matInput />
-                </mat-form-field>
+              <div style="display: flex; flex-direction: row;">
                 <mat-checkbox formControlName="disabled"
-                >Disable Option?</mat-checkbox
-              >
+                  >Disable Option?</mat-checkbox
+                >
               </div>
 
               <button
@@ -88,43 +86,53 @@
                 <mat-icon fontIcon="remove"></mat-icon>
               </button>
             </div>
-            <button
-              style="margin-left:15px"
-              mat-raised-button
-              color="primary"
-              (click)="addOptions()"
-            >
-              Add
-            </button>
+            <div style="display: flex; justify-content: space-between;">
+              <ng-container
+                *ngIf="
+                  form.get('typeOfField').value === 'radio' ||
+                  form.get('typeOfField').value === 'select'
+                "
+              >
+                <button mat-raised-button color="warn" (click)="addOptions()">
+                  Add Options?
+                </button>
+              </ng-container>
+              <div style="display: flex; justify-content: flex-end;">
+                <button
+                  type="submit"
+                  mat-raised-button
+                  color="primary"
+                  (click)="onAccept()"
+                >
+                  Accept
+                </button>
+              </div>
+            </div>
           </ng-container>
+
+          <br />
+        </div>
+        <!-- right -->
+        <div class="right">
+          <mat-card>
+            <mat-card-content>
+              <h2>Preview</h2>
+              <form [formGroup]="form2">
+                >
+                <formly-form
+                  [model]="model"
+                  [fields]="fields"
+                  [options]="options"
+                  [form]="form2"
+                >
+                </formly-form>
+              </form>
+            </mat-card-content>
+          </mat-card>
         </div>
       </div>
     </form>
-    <button
-      type="submit"
-      mat-raised-button
-      color="primary"
-      (click)="onAccept()"
-    >
-      Accept
-    </button>
   </mat-card-content>
 </mat-card>
 
 <hr />
-
-<mat-card>
-  <mat-card-content>
-    <h2>Preview</h2>
-    <form [formGroup]="form2">
-      >
-      <formly-form
-        [model]="model"
-        [fields]="fields"
-        [options]="options"
-        [form]="form2"
-      >
-      </formly-form>
-    </form>
-  </mat-card-content>
-</mat-card>

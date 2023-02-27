@@ -67,6 +67,20 @@ export class Formlyv2Component implements OnInit {
     return this.form.controls['field_type'] as FormControl;
   }
 
+  clearFields() {
+    this.form.patchValue({
+      key: '',
+      typeOfField: '',
+      props: {
+        label: '',
+        placeholder: '',
+        description: '',
+        is_required: false,
+      },
+      option_extra: [],
+    });
+  }
+
   addOptions() {
     const index = new FormGroup({
       value: new FormControl(''),
