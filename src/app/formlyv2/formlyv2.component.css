@@ -19,3 +19,12 @@
   flex-direction: column;
   width: 50%;
 }
+
+.labelplace {
+  display: flex;
+  flex-direction: row;
+}
+
+.place {
+  margin-left: 15px;
+}

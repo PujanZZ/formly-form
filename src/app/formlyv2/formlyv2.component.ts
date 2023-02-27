@@ -9,55 +9,61 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 })
 export class Formlyv2Component implements OnInit {
   form = new FormGroup({
-    field_type: new FormControl(),
-    textareaField: new FormControl(),
-    option: new FormArray([]),
-    is_required: new FormControl(),
-    is_checked: new FormControl(false),
-    radio_button: new FormControl(''),
-    multi_select: new FormControl(''),
+    key: new FormControl(''),
+    typeOfField: new FormControl(''),
+    props: new FormGroup({
+      label: new FormControl(''),
+      placeholder: new FormControl(''),
+      description: new FormControl(''),
+      is_required: new FormControl(false),
+    }),
   });
 
   model: any = {};
   options: FormlyFormOptions = {};
 
   fields: FormlyFieldConfig[] = [
-    {
-      key: 'InputField',
-      type: 'input',
-      props: {
-        label: 'Input Field',
-        placeholder: '',
-        description: 'Description',
-        required: this.form.controls['is_checked'].value,
-      },
-    },
+    // {
+    //   key: this.form.get('key').value,
+    //   type: this.form.get('typeOfField').value,
+    //   props: {
+    //     label: this.form.get(['props', 'label']).value,
+    //     placeholder: this.form.get(['props', 'placeholder']).value,
+    //     description: this.form.get(['props', 'description']).value,
+    //     required: this.form.get(['props', 'is_required']).value,
+    //   },
+    // },
   ];
 
   listInput: string[] = ['input', 'textarea', 'selector', 'radio'];
 
   constructor() {
-    this.form.controls['is_required'].valueChanges.subscribe((value) => {
-      const fieldControl = this.form.get('field_type');
-      const textareaControl = this.form.get('textareaField');
-
-      if (value == 'false') {
-        fieldControl.setValidators([Validators.required]);
-        textareaControl.setValidators([Validators.required]);
-      } else {
-        fieldControl.clearValidators();
-        textareaControl.clearValidators();
-      }
-
-      fieldControl.updateValueAndValidity();
-      textareaControl.updateValueAndValidity();
+    this.form.valueChanges.subscribe(() => {
+      this.fields = [
+        {
+          key: this.form.get('key').value,
+          type: this.form.get('typeOfField').value,
+          props: {
+            label: this.form.get(['props', 'label']).value,
+            placeholder: this.form.get(['props', 'placeholder']).value,
+            description: this.form.get(['props', 'description']).value,
+            required: this.form.get(['props', 'is_required']).value,
+          },
+        },
+      ];
     });
   }
 
   ngOnInit() {}
 
-  submit(model: any): void {
-    console.log(this.model);
+  submit(model: any): void {}
+
+  onSubmit() {
+    console.log(this.form);
+  }
+
+  onAccept() {
+    console.log(this.fields);
   }
 
   get option() {
