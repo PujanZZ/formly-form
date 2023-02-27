@@ -19,6 +19,7 @@ export class Formlyv2Component implements OnInit {
       is_required: new FormControl(false),
     }),
     option_extra: new FormArray([]),
+    select_multiple: new FormControl(false),
   });
 
   form2 = new FormGroup({});
@@ -47,6 +48,7 @@ export class Formlyv2Component implements OnInit {
               (this.form.get('option_extra') as FormArray)
                 .controls as FormGroup[]
             ).map((v) => v.value),
+            multiple: this.form.get('select_multiple').value,
           },
         },
       ];

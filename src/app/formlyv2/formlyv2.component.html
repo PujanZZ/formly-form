@@ -49,6 +49,11 @@
             <mat-checkbox formControlName="is_required"
               >Required Field?</mat-checkbox
             >
+            <ng-container *ngIf="form.get('typeOfField').value === 'select'">
+              <mat-checkbox formControlName="select_multiple"
+                >Multiple Options?</mat-checkbox
+              >
+            </ng-container>
           </ng-container>
 
           <ng-container>
