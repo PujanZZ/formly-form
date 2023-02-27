@@ -3,7 +3,6 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-formlyv2',
   templateUrl: './formlyv2.component.html',
   styleUrls: ['./formlyv2.component.css'],
@@ -20,6 +19,8 @@ export class Formlyv2Component implements OnInit {
     }),
     options: new FormArray([]),
   });
+
+  form2 = new FormGroup({});
 
   model: any = {};
   options: FormlyFormOptions = {};
@@ -58,14 +59,12 @@ export class Formlyv2Component implements OnInit {
 
   ngOnInit() {}
 
-  submit(model: any): void {}
-
   onSubmit() {
     console.log(this.form);
   }
 
   onAccept() {
-    console.log(this.fields);
+    console.log(this.model);
   }
 
   get option() {
