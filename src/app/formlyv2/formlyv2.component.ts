@@ -39,48 +39,48 @@ export class Formlyv2Component implements OnInit {
   ];
 
   constructor() {
-    combineLatest([
-      this.form.valueChanges,
-      this.form.get('option_extra').valueChanges,
-    ]).subscribe(([a, b]) => {
-      this.fields = [
-        {
-          key: a.key,
-          type: a.typeOfField,
-          props: {
-            label: a.props.label,
-            placeholder: a.props.placeholder,
-            description: a.props.description,
-            required: a.props.is_required,
-            options: (b as FormGroup[]).map((v) => v.value),
-          },
-        },
-      ];
-    });
-
-    // this.form.valueChanges.subscribe(() => {
-    //   console.log(
-    //     (
-    //       (this.form.get('option_extra') as FormArray).controls as FormGroup[]
-    //     ).map((v) => v.value)
-    //   );
+    // combineLatest([
+    //   this.form.valueChanges,
+    //   this.form.get('option_extra').valueChanges,
+    // ]).subscribe(([a, b]) => {
     //   this.fields = [
     //     {
-    //       key: this.form.get('key').value,
-    //       type: this.form.get('typeOfField').value,
+    //       key: a.key,
+    //       type: a.typeOfField,
     //       props: {
-    //         label: this.form.get(['props', 'label']).value,
-    //         placeholder: this.form.get(['props', 'placeholder']).value,
-    //         description: this.form.get(['props', 'description']).value,
-    //         required: this.form.get(['props', 'is_required']).value,
-    //         options: (
-    //           (this.form.get('option_extra') as FormArray)
-    //             .controls as FormGroup[]
-    //         ).map((v) => v.value),
+    //         label: a.props.label,
+    //         placeholder: a.props.placeholder,
+    //         description: a.props.description,
+    //         required: a.props.is_required,
+    //         options: (b as FormGroup[]).map((v) => v.value),
     //       },
     //     },
     //   ];
     // });
+
+    this.form.valueChanges.subscribe(() => {
+      console.log(
+        (
+          (this.form.get('option_extra') as FormArray).controls as FormGroup[]
+        ).map((v) => v.value)
+      );
+      this.fields = [
+        {
+          key: this.form.get('key').value,
+          type: this.form.get('typeOfField').value,
+          props: {
+            label: this.form.get(['props', 'label']).value,
+            placeholder: this.form.get(['props', 'placeholder']).value,
+            description: this.form.get(['props', 'description']).value,
+            required: this.form.get(['props', 'is_required']).value,
+            options: (
+              (this.form.get('option_extra') as FormArray)
+                .controls as FormGroup[]
+            ).map((v) => v.value),
+          },
+        },
+      ];
+    });
   }
 
   getValueFromIndexFormGroup() {
@@ -114,12 +114,12 @@ export class Formlyv2Component implements OnInit {
       value: new FormControl(''),
       label: new FormControl(''),
     });
-    this.optionArr.push(index);
+    (this.form.get('option_extra') as FormArray).push(index);
   }
 
   removeOptions(index: number) {
     if (this.optionArr.length > 0) {
-      this.optionArr.splice(index);
+      (this.form.get('option_extra') as FormArray).removeAt(index);
     }
   }
 }
