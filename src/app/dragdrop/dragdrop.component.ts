@@ -11,32 +11,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dragdrop.component.css'],
 })
 export class DragdropComponent implements OnInit {
-  items = [
+  items: { title: string; description: string }[] = [
     { title: 'Item 1', description: 'This is item 1.' },
     { title: 'Item 2', description: 'This is item 2.' },
     { title: 'Item 3', description: 'This is item 3.' },
   ];
 
-  items2 = [
-    { title: 'Item 4', description: 'This is item 4.' },
-    { title: 'Item 5', description: 'This is item 5.' },
-    { title: 'Item 6', description: 'This is item 6.' },
-  ];
+  items2 = [{ title: 'Item 4', description: 'This is item 4.' }];
 
   constructor() {}
 
   ngOnInit() {}
 
-  dropItem(event: CdkDragDrop<string[]>) {
+  onDrop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
-      // Move the item within the same list
+      // Move item within the same array
       moveItemInArray(
         event.container.data,
         event.previousIndex,
         event.currentIndex
       );
     } else {
-      // Remove the item from the original list and add it to the new list
+      // Move item between arrays
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
