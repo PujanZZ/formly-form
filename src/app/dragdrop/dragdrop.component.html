@@ -1,0 +1,28 @@
+<div class="card-container" cdkDropList (cdkDropListDropped)="dropItem($event)">
+  <mat-card style="margin-top:30px" *ngFor="let item of items" cdkDrag>
+    <mat-card-header>
+      <mat-card-title>{{ item.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      {{ item.description }}
+    </mat-card-content>
+  </mat-card>
+</div>
+<hr />
+<hr />
+<hr />
+
+<div
+  class="card2-container"
+  cdkDropList
+  (cdkDropListDropped)="dropItem($event)"
+>
+  <mat-card *ngFor="let i of items2" cdkDrag>
+    <mat-card-header>
+      <mat-card-title>{{ i }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      {{ i }}
+    </mat-card-content>
+  </mat-card>
+</div>
