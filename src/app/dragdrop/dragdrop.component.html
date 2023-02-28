@@ -19,10 +19,10 @@
 >
   <mat-card *ngFor="let i of items2" cdkDrag>
     <mat-card-header>
-      <mat-card-title>{{ i }}</mat-card-title>
+      <mat-card-title>{{ i.title }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      {{ i }}
+      {{ i.description }}
     </mat-card-content>
   </mat-card>
 </div>
