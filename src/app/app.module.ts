@@ -19,12 +19,12 @@ import { FormlyComponent } from './formly/formly.component';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { MatSelectModule } from '@angular/material/select';
-//import { Formlyv2Component } from './formlyv2/formlyv2.component';
+import { Formlyv2Component } from './formlyv2/formlyv2.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormlyMatDatepickerModule } from '@ngx-formly/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { DragdropComponent } from './dragdrop/dragdrop.component';
+//import { DragdropComponent } from './dragdrop/dragdrop.component';
 
 @NgModule({
   imports: [
@@ -44,7 +44,6 @@ import { DragdropComponent } from './dragdrop/dragdrop.component';
     FormlyMaterialModule,
     MatNativeDateModule,
     FormlyMatDatepickerModule,
-    DragDropModule,
     FormlyModule.forRoot({
       validationMessages: [
         {
@@ -54,7 +53,7 @@ import { DragdropComponent } from './dragdrop/dragdrop.component';
       ],
     }),
   ],
-  declarations: [AppComponent, DragdropComponent],
+  declarations: [AppComponent, Formlyv2Component],
   exports: [CommonModule, FormsModule],
   bootstrap: [AppComponent],
 })
